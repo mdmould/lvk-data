@@ -20,7 +20,7 @@ downloads = {
     'GWTC-3': {
         'PE': '5546662',
         'RP': '5650061',
-        'VT': '5636815',
+        'VT': ['5546675', '5636815'],
     },
 }
 
@@ -40,17 +40,18 @@ def download(catalog, dataset, extract = False, remove = False):
 
     files = glob.glob(f'{path}/*')
 
-    if 'https' in downloads[catalog][dataset]:
-        os.system(f'wget {downloads[catalog][dataset]} -P {path}')
+    links = downloads[catalog][dataset]
+    if type(links) not in (list, tuple):
+        links = [links]
 
-    else:
-        record = requests.get(
-            f'https://zenodo.org/api/records/{downloads[catalog][dataset]}',
-        ).json()['conceptrecid']
-        record = requests.get(
-            f'https://zenodo.org/api/records/{record}',
-        ).json()['id']
-        os.system(f'zenodo_get {record} -o {path}')
+    for link in links:
+        if 'https' in link:
+            os.system(f'wget {link} -P {path}')
+        else:
+            url = 'https://zenodo.org/api/records'
+            record = requests.get(f'{url}/{link}').json()['conceptrecid']
+            record = requests.get(f'{url}/{record}').json()['id']
+            os.system(f'zenodo_get {record} -o {path}')
 
     files = sorted(set(glob.glob(f'{path}/*')) - set(files))
 
