@@ -84,9 +84,12 @@ def main():
     args = kwargs.pop('args')
 
     if args == []:
-        for catalog in downloads:
-            for dataset in downloads[catalog]:
-                download(catalog, dataset, **kwargs)
+        print('About to download all PE, RP, and VT data for all catalogs.')
+        y = input('Are you sure you want to proceed? [y/n]')
+        if y.lower() == 'y':
+            for catalog in downloads:
+                for dataset in downloads[catalog]:
+                    download(catalog, dataset, **kwargs)
 
     elif len(args) == 2:
         catalog, dataset = args if 'GWTC' in args[0] else reversed(args)
