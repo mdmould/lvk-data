@@ -35,6 +35,8 @@ def download(catalog, dataset, extract = False, remove = False):
     if dataset not in downloads[catalog]:
         raise KeyError(f'{dataset} not a recognized dataset for {catalog}')
 
+    print('Downloading', catalog, dataset)
+
     path = '/'.join(__file__.split('/')[:-1])
     path += '/' + catalog + '/' + dataset
 
@@ -46,7 +48,7 @@ def download(catalog, dataset, extract = False, remove = False):
 
     for link in links:
         if 'https' in link:
-            os.system(f'wget {link} -P {path}')
+            os.system(f'wget {link} -nc -P {path}')
         else:
             url = 'https://zenodo.org/api/records'
             record = requests.get(f'{url}/{link}').json()['conceptrecid']

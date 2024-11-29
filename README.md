@@ -29,5 +29,5 @@ Between 0 and 2 (inclusive) positional arguments are accepted.
 - If two are given, they correspond to a single catalog and a single dataset type. E.g., `python download.py GWTC-3 VT` will download the `VT` files from the `GWTC-3` data release.
 
 Flags:
-- `--extract`: extract any `.zip`, `.tar`, or `.gz` archive files that are downloaded
-- `--remove`: delete any archive files after extracting
+- `--extract`: Extract archive files that are downloaded.
+- `--remove`: Delete archive files after extracting.
