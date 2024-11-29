@@ -1,6 +1,6 @@
 # lvk-data
 
-This is a repo I use to download and store public data released by the LIGO-Virgo-KAGRA collaboration. In particular, from the [GWTC releases](https://gwosc.org/eventapi/html/GWTC/) I usually only need parameter-estimation (PE) samples, search injections to estimate sensitive volume-time (VT), and rates and population (RP) analysis results. The data for these can be found on [GWOSC](https://gwosc.org).
+This is a repo I use to download and store public data released by the LIGO-Virgo-KAGRA (LVK) collaboration. In particular, from the [GWTC releases](https://gwosc.org/eventapi/html/GWTC/) I usually only need parameter-estimation (PE) samples, search injections to estimate sensitive volume-time (VT), and rates and population (RP) analysis results. The data for these can be found on [GWOSC](https://gwosc.org).
 
 ## Installation
 
