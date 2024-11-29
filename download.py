@@ -40,8 +40,6 @@ def download(catalog, dataset, extract = False, remove = False):
 
     files = glob.glob(f'{path}/*')
 
-    print(path, files)
-
     if 'https' in downloads[catalog][dataset]:
         os.system(f'wget {downloads[catalog][dataset]} -P {path}')
 
@@ -60,7 +58,6 @@ def download(catalog, dataset, extract = False, remove = False):
         print('Downloaded', file)
 
     if extract:
-        print(files)
         for file in files:
             if file[-4:] == '.zip':
                 os.system(f'unzip {file} -d {path}')
@@ -85,7 +82,7 @@ def main():
     parser.add_argument('--remove', action = 'store_true')
     kwargs = parser.parse_args().__dict__
     args = kwargs.pop('args')
-    print(args, kwargs)
+
     if args == []:
         for catalog in downloads:
             for dataset in downloads[catalog]:
