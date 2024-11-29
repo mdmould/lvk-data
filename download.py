@@ -33,7 +33,7 @@ def download(catalog, dataset, extract = False, remove = False):
         raise KeyError(f'{catalog} not a recognized catalog')
 
     if dataset not in downloads[catalog]:
-        raise KeyError('f{dataset} not a recognized dataset for {catalog}')
+        raise KeyError(f'{dataset} not a recognized dataset for {catalog}')
 
     path = '/'.join(__file__.split('/')[:-1])
     path += '/' + catalog + '/' + dataset
