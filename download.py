@@ -73,6 +73,8 @@ def download(catalog, dataset, extract = False, remove = False):
                 os.system(f'tar -xvf {file} -C {path}')
             elif file[-7:] == '.tar.gz':
                 os.system(f'tar -xzvf {file} -C {path}')
+            elif file[-3:] == '.gz':
+                os.system(f'gunzip -kf {file}')
             else:
                 continue
 
