@@ -84,6 +84,9 @@ def download(catalog, dataset, extract = False, remove = False):
                 os.system(f'rm {file}')
                 print('Removed', file)
 
+        if catalog == 'GWTC-1' and dataset == 'PE':
+            os.system(f'cp {path}/GWTC-1_sample_release/*GW170817* {path}')
+
 
 def main():
     parser = argparse.ArgumentParser()
