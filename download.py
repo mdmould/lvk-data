@@ -85,7 +85,11 @@ def download(catalog, dataset, extract = False, remove = False):
                 print('Removed', file)
 
         if catalog == 'GWTC-1' and dataset == 'PE':
-            os.system(f'cp {path}/GWTC-1_sample_release/*GW170817* {path}')
+            os.system(f'mv {path}/GWTC-1_sample_release/* {path}')
+            os.system(f'rm -r {path}/GWTC-1_sample_release')
+        elif catalog == 'GWTC-2' and dataset == 'PE':
+            os.system(f'mv {path}/all_posterior_samples/* {path}')
+            os.system(f'rm -r {path}/all_posterior_samples')
 
 
 def main():
