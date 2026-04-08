@@ -48,17 +48,18 @@ def download(catalog, dataset, extract = False, remove = False):
     files = glob.glob(f'{path}/*')
 
     links = downloads[catalog][dataset]
-    if type(links) not in (list, tuple):
+    if type(links) is not list:
         links = [links]
 
     for link in links:
         if 'https' in link:
             os.system(f'wget {link} -nc -P {path}')
         else:
-            url = 'https://zenodo.org/api/records'
-            record = requests.get(f'{url}/{link}').json()['conceptrecid']
-            record = requests.get(f'{url}/{record}').json()['id']
-            os.system(f'zenodo_get {record} -o {path}')
+            # url = 'https://zenodo.org/api/records'
+            # record = requests.get(f'{url}/{link}').json()['conceptrecid']
+            # record = requests.get(f'{url}/{record}').json()['id']
+            # os.system(f'zenodo_get {record} -o {path}')
+            os.system(f'zenodo_get {link} -o {path}')
 
     files = sorted(set(glob.glob(f'{path}/*')) - set(files))
 
