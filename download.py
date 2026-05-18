@@ -62,7 +62,7 @@ def download(catalog, dataset, extract = False, remove = False):
             # record = requests.get(f'{url}/{link}').json()['conceptrecid']
             # record = requests.get(f'{url}/{record}').json()['id']
             # os.system(f'zenodo_get {record} -o {path}')
-            os.system(f'zenodo_get {link} -o {path}')
+            os.system(f'zenodo_get {link} -o {path} -v 4')
 
     files = sorted(set(glob.glob(f'{path}/*')) - set(files))
 
